@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Cadastrar Produto</h2>
+    <form id="formProduto">
+        <label>Nome:</label>
+        <input type="text" id="nome" name="nome">
+
+        <br><br>
+        <label>Preço:</label>
+        <input type="number" id="preco" step="0.01" name="preco">
+        
+        <br><br>
+        <button type="submit">Enviar para a API</button>
+    </form>
+    <div id="resposta"></div>
+    <script>
+        document.getElementById('formProduto').addEventListener('submit', function(e){
+            e.preventDefault(); // torna o form assincrono
+
+            const formData = new FormData(this); // Instancia um objeto form
+            const dados = Object.fromEntries(formData); // Captura os campos e converte para JSON
+            fetch('../api/index.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(dados)
+            })
+            .then(response => response.text())
+            .then(texto => {
+                // console.log("Resposta bruta do servidor: ", texto)
+                let resp = document.getElementById('resposta')
+                resp.innerHTML = texto;
+            });
+        });
+
+
+        
+    </script>
+</body>
+</html>
