@@ -1,0 +1,66 @@
+-- Criação da estrutura do banco de dados e inserção de 50 registros
+CREATE DATABASE IF NOT EXISTS `sistema_jwt` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `sistema_jwt`;
+
+CREATE TABLE IF NOT EXISTS `usuarios` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `nome` VARCHAR(100) NOT NULL,
+    `email` VARCHAR(100) NOT NULL UNIQUE,
+    `senha_hash` VARCHAR(255) NOT NULL,
+    `perfil` VARCHAR(50) NOT NULL DEFAULT 'estudante',
+    `criado_em` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Inserção de 50 registros de teste (Senha padrão para todos: 123456)
+-- Hash Bcrypt gerado para '123456': $2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.
+INSERT INTO `usuarios` (`nome`, `email`, `senha_hash`, `perfil`) VALUES
+('Anacléto Silva', 'anacleto@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'administrador'),
+('Ana Souza', 'ana.souza@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Bruno Lima', 'bruno.lima@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Carla Dias', 'carla.dias@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Daniel Alves', 'daniel.alves@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Eduardo Rocha', 'eduardo.rocha@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Fernanda Costa', 'fernanda.costa@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Gabriel Santos', 'gabriel.santos@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Helena Martins', 'helena.martins@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Igor Ferreira', 'igor.ferreira@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Julia Pereira', 'julia.pereira@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Kevin Ribeiro', 'kevin.ribeiro@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Larissa Carvalho', 'larissa.carvalho@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Lucas Oliveira', 'lucas.oliveira@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Mariana Gomes', 'mariana.gomes@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Nicolas Barbosa', 'nicolas.barbosa@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Olivia Ramos', 'olivia.ramos@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Paulo Castro', 'paulo.castro@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Quintino Freitas', 'quintino.freitas@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Rafael Araujo', 'rafael.araujo@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Sofia Melo', 'sofia.melo@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Thiago Cardozo', 'thiago.cardozo@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Uriel Nunes', 'uriel.nunes@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Vanessa Teixeira', 'vanessa.teixeira@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Wagner Moreira', 'wagner.moreira@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Xavier Machado', 'xavier.machado@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Yasmin Vieira', 'yasmin.vieira@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Zeneide Cunha', 'zeneide.cunha@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Arthur Mendes', 'arthur.mendes@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Beatriz Lopes', 'beatriz.lopes@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Caio Fonseca', 'caio.fonseca@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Diana Neves', 'diana.neves@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Erick Siqueira', 'erick.siqueira@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Fabiana Monteiro', 'fabiana.monteiro@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Gustavo Borges', 'gustavo.borges@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Hilda Resende', 'hilda.resende@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Ismael Duarte', 'ismael.duarte@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Joana Prado', 'joana.prado@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Kleber Viana', 'kleber.viana@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Livia Bueno', 'livia.bueno@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Marcio Correa', 'marcio.correa@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Nadia Farias', 'nadia.farias@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Otavio Franco', 'otavio.franco@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Patricia Guimaraes', 'patricia.guimaraes@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Renan Barros', 'renan.barros@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Sabrina Nogueira', 'sabrina.nogueira@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Tomas Peixoto', 'tomas.peixoto@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Valeria Sales', 'valeria.sales@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Willian Antunes', 'willian.antunes@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante'),
+('Zilda Figueiredo', 'zilda.figueiredo@email.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe18q0f2oK5a1mG1bM8f5v4q3e2w1r0t.', 'estudante');
